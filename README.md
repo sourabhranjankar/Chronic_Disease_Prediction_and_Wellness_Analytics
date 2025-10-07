@@ -1,79 +1,73 @@
-# Forecasting Weekly Emergency Department Visits for Influenza Using RNNs
+# Community Wellness Initiatives for Chronic Disease Prevention
 
-This project applies Recurrent Neural Networks (RNNs) — including Simple RNN and LSTM architectures — to forecast **weekly influenza-related emergency department (ED) visits in California**.  
-The goal is to capture seasonal flu trends, evaluate model accuracy, and support early resource planning for healthcare systems.
+This project analyzes **chronic disease prevalence across U.S. urban communities** using predictive modeling and behavioral risk analysis.  
+It combines **EDA, clustering, and machine learning (Random Forest & SVR)** to explore how **preventive care access, behavioral factors, and population characteristics** interact to shape health outcomes.
 
 ---
 
 ## 🎯 Objectives
-- Forecast upcoming weekly influenza-related ED visits.  
-- Compare the predictive performance of **Simple RNN vs LSTM**.  
-- Identify seasonal peaks and evaluate model stability under raw vs smoothed data.  
+1. Identify how preventive care access and behavioral risk factors affect chronic disease patterns.
+2. Examine the role of population size and healthcare resource distribution.
+3. Cluster communities by behavioral risk to target interventions.
+4. Predict chronic disease burden using machine learning models.
 
 ---
 
 ## 🧰 Tech Stack
 | Category | Tools / Libraries |
 |-----------|-------------------|
-| **Language** | Python 3.10 +  |
-| **Data Handling** | Pandas, NumPy |
-| **Visualization** | Matplotlib, Seaborn |
-| **Modeling** | TensorFlow / Keras |
-| **Evaluation** | Scikit-learn (MSE, RMSE, MAE) |
+| Data Wrangling | Python, Pandas, NumPy, Scikit-learn |
+| Visualization | Matplotlib, Seaborn |
+| Modeling | Random Forest, Support Vector Regression |
+| Clustering | K-Means |
+| Documentation | Jupyter Notebook, MS Excel, LaTeX |
 
 ---
 
-## 🧪 Methodology
-1. **Data Cleaning & Pre-processing**  
-   - Parsed and aggregated weekly ED visit data from California Open Data Portal.  
-   - Handled missing values, standardized timestamps, and adjusted for Daylight Saving Time.  
-
-2. **Exploratory Data Analysis (EDA)**  
-   - Examined multi-year trends to confirm strong winter seasonality.  
-   - Visualized weekly distributions, correlations, and anomalies.  
-
-3. **Model Building**  
-   - Implemented baseline Simple RNN on sine-wave simulation for behavior testing.  
-   - Built and tuned LSTM model for forecasting ED visits.  
-   - Compared raw vs smoothed (moving-average) input signals to analyze stability.  
-
-4. **Evaluation**  
-   - Measured performance using **MSE, RMSE, and MAE**.  
-   - Compared loss curves and prediction alignment against real data.  
-
-5. **Results & Insights**  
-   - LSTM outperformed Simple RNN in long-term memory capture.  
-   - Smoothed data led to ~12–15 % lower RMSE and more stable training.  
-   - Forecasts align with known CDC influenza surges (Nov–Feb).  
+## 📊 Key Findings
+- **Behavioral factors** (smoking, inactivity, obesity, diabetes) were the strongest predictors of chronic disease.  
+- **K-Means clustering** revealed that neighborhoods sharing similar risk patterns had higher disease burdens.  
+- **Preventive care access alone** did not reduce disease prevalence — care effectiveness depended on socioeconomic context.  
+- **Support Vector Regression (SVR)** achieved the best predictive accuracy:
+  - R² = **0.9941**
+  - RMSE = **0.3563**
+  - MAE = **0.2435**
+  - MAPE = **1.52%**
 
 ---
 
-## 📈 Example Output
-*(Add an image here once you upload a chart)*  
-`assets/model_forecast.png`
+## 🧩 Methodology
+1. **Data Cleaning** – Preprocessed CDC’s 500 Cities dataset, imputed missing values, and normalized features.  
+2. **EDA** – Visualized geographic and behavioral correlations using heatmaps and scatterplots.  
+3. **Feature Engineering** – Created a **Chronic Disease Index (CDI)** combining 8 major health conditions.  
+4. **Modeling** – Compared Random Forest and SVR performance using standard metrics.  
+5. **Clustering** – Applied **K-Means** to group tracts by behavioral profiles and examined their CDI distribution.  
+6. **Feature Importance** – Identified top predictive factors (inactivity, smoking, obesity).  
 
 ---
 
-## 🧠 Key Takeaways
-- RNN-based forecasting is effective for **seasonal healthcare time series**.  
-- Data smoothing reduces noise and improves model robustness.  
-- LSTM offers better memory retention and lower error metrics.  
-- Insights can assist public health teams in preparing for flu surges.  
+## 🧩 Model Comparison
+| Model | R² | RMSE | MAE | MAPE |
+|--------|----|------|-----|------|
+| Random Forest | 0.9901 | 0.4612 | 0.3429 | 2.05% |
+| SVR | **0.9941** | **0.3563** | **0.2435** | **1.52%** |
 
 ---
 
-## 📁 File Details
-| File | Description |
-|------|-------------|
-| `1_P_DA_CLEANING.ipynb` | Complete notebook with preprocessing, model training, and evaluation steps |
-| `requirements.txt` | Optional dependency list for replication |
-| `assets/` | Visuals (plots and charts generated by the notebook) |
+## 🌍 Data Source
+- [CDC 500 Cities Dataset (2018)](https://chronicdata.cdc.gov)
+- [Behavioral Risk Factor Surveillance System (BRFSS)](https://www.cdc.gov/brfss)
+- [World Health Organization (WHO) – Noncommunicable Diseases](https://www.who.int/news-room/fact-sheets/detail/noncommunicable-diseases)
 
 ---
 
-## 🚀 How to Run
-```bash
-git clone https://github.com/<yourusername>/Influenza_ED_Visits_Forecasting.git
-cd Influenza_ED_Visits_Forecasting
-pip install -r requirements.txt
-jupyter notebook 1_P_DA_CLEANING.ipynb
+## 📄 Report
+The complete research report is available as a PDF:  
+📘 **Community_Wellness_Initiatives_for_Chronic_Disease_Prevention.pdf**
+
+---
+
+## 📈 Sample Visualization
+*(Add your chart here, e.g., correlation heatmap or model prediction scatter plot)*  
+```markdown
+![Feature Importance](assets/feature_importance.png)
